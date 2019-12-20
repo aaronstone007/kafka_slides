@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Data Streaming</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+
+					<section>
+						<p>Data Streaming</p>
+						<img src="images/real-time-strategy.png" width="200" height="200" alt="https://www.flaticon.com/free-icon/real-time-strategy_1753711?term=real%20time&page=1&position=6">
+					</section>
+					<section>
+						<p>What/Why?</p>
+						<img src="images/diff.png" width="1000" height="300" alt="https://aws.amazon.com/streaming-data/">
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<p>Apache Kafka</p>
+						<img src="images/kafka_logo.jpg" height="200" width="350" alt="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwin2KKSnMPmAhWRTX0KHTDTCY8QjRx6BAgBEAQ&url=https%3A%2F%2Fflickr.com%2F91374488%40N07%2F38088497225&psig=AOvVaw2isyjcQmVjn7hBJ9tajw26&ust=1576896705562230">
+					</section>
+					<section>
+						<p>What</p>
+						<img src="images/kafka_arch.png" width="500" height="200" alt="https://miro.medium.com/max/2696/1*pFdqsthF5LBeASS1XGF9Zg.png">
+					</section>
+					<section>
+						<p>Zookeeper</p>
+						<img src="images/kafka_zookeeper.png" width="350" height="250" alt="udacity">
+						<p>* Manages kafka cluster</p>
+						<p>* zookeeper lets the broker to join and leave gracefully</p>
+					</section>
+					<section>
+						<p>Data Partitioning</p>
+						<img src="images/kafka_data_partition.png" alt="udacity" width="550" height="250">
+						<p>* Partition breeds parallelism</p>
+						<p>* Kafka hashes each message and pushes message into appropriate parition so that producer and consumer can behave asynchronously</p>
+					</section>
+					<section>
+						<p>Data Storage</p>
+						<img src="images/kafka_data_storage.png" width="550" height="250" alt="udacity">
+						<p>* Kafka stores data inside appropriate topics which in turn is just a file with logs, Kafka focusses on append only logs</p>
+					</section>
+
+				</section>
+				<section>
+					<section>
+						<p>Scenario: How do you handle type of data and its persistence ?</p>
+					</section>
+					<section>
+						<img src="images/avro.png" alt="">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<p>Scenario: Sending data schema along with data is slowing down my application</p>
+					</section>
+					<section>
+						<p>Schema Registry</p>
+						<img src="images/schema_reg.png" width="550" height="250" alt="udacity">
+						<p>* Confluent lets you define schema on schema registry which is a HTTP endpoint which communicates to downstream application when there is a change in schema</p>
+					</section>
+				</section>
+
+				<section>
+					<p>Confluent Kafka Ecosystem</p>
+					<img src="images/ecosystem.png" height="280" width="710" alt="https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwizqOyWscPmAhUUdysKHQzHDJoQjhx6BAgBEAI&url=https%3A%2F%2Fmedium.com%2F%40navdeepsharma%2Fthe-ecosystem-of-apache-kafka-6087b621d16f&psig=AOvVaw2JAqzHzz-zMRVx3WCioPb4&ust=1576902309210260">
+					<p>* Kafka Connect : Connects with JDBC or ODBC origins</p>
+					<p>* KSQL : Performs SQL operations on Kafka Topics</p>
+				</section>
+
+				<section>
+
+					<img src="images/faust_logo.png" alt="https://faust.readthedocs.io/en/latest/" width="600" height="200">
+					<p>Faust is a stream processing library, porting the ideas from Kafka Streams to Python.</p>
+				</section>
+
+				<section>
+					<div>Icons made by <a href="https://www.flaticon.com/authors/flat-icons" title="Flat Icons">Flat Icons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+
+			Reveal.initialize({
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
